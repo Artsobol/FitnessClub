@@ -1,0 +1,47 @@
+package io.github.artsobol.fitnessclub.infrastructure.security.config;
+
+import io.github.artsobol.fitnessclub.infrastructure.security.config.properties.SecurityConfigProperties;
+import io.github.artsobol.fitnessclub.infrastructure.security.jwt.JwtAuthenticationFilter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+
+    private final SecurityConfigProperties properties;
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtFilter) {
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest
+                        .anyRequest().authenticated()
+                ).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        Map<String, PasswordEncoder> encoders = new HashMap<>();
+        encoders.put("argon2", Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8());
+        encoders.put("bcrypt", new BCryptPasswordEncoder(properties.bCryptStrength()));
+        return encoders.get(properties.passwordEncoder());
+    }
+}
