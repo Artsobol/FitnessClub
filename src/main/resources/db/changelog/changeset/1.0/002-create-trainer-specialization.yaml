@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002
+      author: artsobol
+
+      changes:
+        - createSequence:
+            sequenceName: seq_trainer_specialization
+
+        - createTable:
+            tableName: trainer_specializations
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_trainer_specializations
+
+              - column:
+                  name: specialization
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: uq_trainer_specializations_specialization
+
+        - addDefaultValue:
+            tableName: trainer_specializations
+            columnName: id
+            defaultValueSequenceNext: seq_trainer_specialization
+
+        - createIndex:
+            indexName: idx_trainer_specializations_specialization
+            tableName: trainer_specializations
+            columns:
+              - column:
+                  name: specialization
+
+      rollback:
+        - dropSequence:
+            sequenceName: seq_trainer_specialization
+        - dropIndex:
+            indexName: idx_trainer_specializations_specialization
+            tableName: trainer_specializations
+        - dropTable:
+            tableName: trainer_specializations

@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/1.0/001-create-user.yaml
+  - include:
+      file: db/changelog/changeset/1.0/002-create-trainer-specialization.yaml
+  - include:
+      file: db/changelog/changeset/1.0/003-trainer-profiles.yaml
