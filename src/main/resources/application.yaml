@@ -20,9 +20,21 @@ spring:
 
 app:
   security:
+    cookie:
+      secure: false
+      max-age: ${REFRESH_TTL}
+      same-site: Lax
+      cookie-name: refresh_token
+      path: /api/auth/refresh
     jwt:
       secret: ${JWT_SECRET}
       access-token-expiration: 15m
     config:
       b-crypt-strength: 12
       password-encoder: argon2
+    session:
+      max-sessions: 5
+    refresh:
+      ttl: ${REFRESH_TTL}
+      pepper: ${REFRESH_PEPPER}
+      length: 64
