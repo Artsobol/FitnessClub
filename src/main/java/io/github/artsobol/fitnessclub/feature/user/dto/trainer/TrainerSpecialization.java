@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.user.trainer;
+package io.github.artsobol.fitnessclub.feature.user.dto.trainer;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
