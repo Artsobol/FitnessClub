@@ -1,6 +1,6 @@
 package io.github.artsobol.fitnessclub.infrastructure.security.user;
 
-import io.github.artsobol.fitnessclub.feature.user.User;
+import io.github.artsobol.fitnessclub.feature.user.dto.User;
 import lombok.RequiredArgsConstructor;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
