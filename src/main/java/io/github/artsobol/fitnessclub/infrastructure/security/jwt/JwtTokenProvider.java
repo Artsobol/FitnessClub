@@ -1,6 +1,6 @@
 package io.github.artsobol.fitnessclub.infrastructure.security.jwt;
 
-import io.github.artsobol.fitnessclub.feature.user.Role;
+import io.github.artsobol.fitnessclub.feature.user.dto.Role;
 import io.github.artsobol.fitnessclub.infrastructure.security.config.properties.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

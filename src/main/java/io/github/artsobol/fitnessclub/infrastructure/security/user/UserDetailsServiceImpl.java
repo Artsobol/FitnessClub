@@ -1,7 +1,6 @@
 package io.github.artsobol.fitnessclub.infrastructure.security.user;
 
-import io.github.artsobol.fitnessclub.exception.security.AuthenticationException;
-import io.github.artsobol.fitnessclub.feature.user.User;
+import io.github.artsobol.fitnessclub.feature.user.dto.User;
 import io.github.artsobol.fitnessclub.feature.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.jspecify.annotations.NonNull;
@@ -18,7 +17,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(@NonNull String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email).orElseThrow(
-                () -> new AuthenticationException("invalid.credentials")
+                () -> new UsernameNotFoundException("User with email:" + email + " not found")
         );
         return new UserDetailsImpl(user);
     }

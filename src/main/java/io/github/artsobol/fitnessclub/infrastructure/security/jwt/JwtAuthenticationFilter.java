@@ -1,7 +1,7 @@
 package io.github.artsobol.fitnessclub.infrastructure.security.jwt;
 
 import io.github.artsobol.fitnessclub.exception.http.BadRequestException;
-import io.github.artsobol.fitnessclub.feature.user.Role;
+import io.github.artsobol.fitnessclub.feature.user.dto.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;

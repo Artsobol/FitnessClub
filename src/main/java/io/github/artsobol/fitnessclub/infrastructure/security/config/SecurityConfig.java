@@ -1,7 +1,9 @@
 package io.github.artsobol.fitnessclub.infrastructure.security.config;
 
+import io.github.artsobol.fitnessclub.feature.user.repository.UserRepository;
 import io.github.artsobol.fitnessclub.infrastructure.security.config.properties.SecurityConfigProperties;
 import io.github.artsobol.fitnessclub.infrastructure.security.jwt.JwtAuthenticationFilter;
+import io.github.artsobol.fitnessclub.infrastructure.security.user.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,7 +33,11 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest
+                .authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest.requestMatchers(
+                                        "/api/auth/register",
+                                        "/api/auth/login",
+                                        "/api/auth/refresh"
+                                ).permitAll()
                         .anyRequest().authenticated()
                 ).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
@@ -44,4 +51,10 @@ public class SecurityConfig {
         encoders.put("bcrypt", new BCryptPasswordEncoder(properties.bCryptStrength()));
         return encoders.get(properties.passwordEncoder());
     }
+
+    @Bean
+    public UserDetailsService userDetailsService(UserRepository userRepository) {
+        return new UserDetailsServiceImpl(userRepository);
+    }
+
 }
