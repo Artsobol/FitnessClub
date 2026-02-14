@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.user;
+package io.github.artsobol.fitnessclub.feature.user.dto;
 
 public enum Role {
     CLIENT,
