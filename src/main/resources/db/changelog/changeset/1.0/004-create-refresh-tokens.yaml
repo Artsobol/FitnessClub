@@ -1,0 +1,138 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004
+      author: artsobol
+
+      changes:
+        - createSequence:
+            sequenceName: seq_refresh_tokens
+
+        - createTable:
+            tableName: refresh_tokens
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_refresh_tokens
+
+              - column:
+                  name: token_hash
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: uq_refresh_tokens_token_hash
+
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: revoked
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: expires_at
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: revoked_at
+                  type: timestamptz
+
+              - column:
+                  name: replace_by_id
+                  type: bigint
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: uq_refresh_tokens_replace_by_id
+
+              - column:
+                  name: session_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: created_at
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: last_used_at
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+
+        - addDefaultValue:
+            tableName: refresh_tokens
+            columnName: id
+            defaultValueSequenceNext: seq_refresh_tokens
+
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: refresh_tokens
+            constraintName: fk_refresh_tokens_user_id
+            referencedTableName: users
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: refresh_tokens
+            baseColumnNames: replace_by_id
+            constraintName: fk_refresh_tokens_replace_by_id
+            referencedTableName: refresh_tokens
+            referencedColumnNames: id
+
+        - createIndex:
+            indexName: idx_refresh_tokens_user_id
+            tableName: refresh_tokens
+            columns:
+              - column:
+                  name: user_id
+
+        - createIndex:
+            indexName: idx_refresh_tokens_user_id_revoked
+            tableName: refresh_tokens
+            columns:
+              - column:
+                  name: user_id
+              - column:
+                  name: revoked
+
+        - createIndex:
+            indexName: idx_refresh_tokens_session_id
+            tableName: refresh_tokens
+            columns:
+              - column:
+                  name: session_id
+
+      rollback:
+        - dropSequence:
+            sequenceName: seq_refresh_tokens
+        - dropIndex:
+            indexName: idx_refresh_tokens_user_id_revoked
+            tableName: refresh_tokens
+        - dropIndex:
+            indexName: idx_refresh_tokens_user_id
+            tableName: refresh_tokens
+        - dropIndex:
+            indexName: idx_refresh_tokens_session_id
+            tableName: refresh_tokens
+        - dropForeignKeyConstraint:
+            baseTableName: refresh_tokens
+            constraintName: fk_refresh_tokens_user_id
+        - dropForeignKeyConstraint:
+            baseTableName: refresh_tokens
+            constraintName: fk_refresh_tokens_replace_by_id
+        - dropTable:
+            tableName: refresh_tokens
