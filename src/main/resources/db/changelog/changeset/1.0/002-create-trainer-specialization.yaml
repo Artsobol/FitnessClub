@@ -18,12 +18,19 @@ databaseChangeLog:
                     primaryKeyName: pk_trainer_specializations
 
               - column:
-                  name: specialization
+                  name: title
                   type: varchar(32)
                   constraints:
                     nullable: false
                     unique: true
-                    uniqueConstraintName: uq_trainer_specializations_specialization
+                    uniqueConstraintName: uq_trainer_specializations_title
+
+              - column:
+                  name: active
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
 
         - addDefaultValue:
             tableName: trainer_specializations
@@ -31,17 +38,17 @@ databaseChangeLog:
             defaultValueSequenceNext: seq_trainer_specialization
 
         - createIndex:
-            indexName: idx_trainer_specializations_specialization
+            indexName: idx_trainer_specializations_title
             tableName: trainer_specializations
             columns:
               - column:
-                  name: specialization
+                  name: title
 
       rollback:
         - dropSequence:
             sequenceName: seq_trainer_specialization
         - dropIndex:
-            indexName: idx_trainer_specializations_specialization
+            indexName: idx_trainer_specializations_title
             tableName: trainer_specializations
         - dropTable:
             tableName: trainer_specializations
