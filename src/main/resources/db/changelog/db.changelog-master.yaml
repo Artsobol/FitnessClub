@@ -7,3 +7,5 @@ databaseChangeLog:
       file: db/changelog/changeset/1.0/003-trainer-profiles.yaml
   - include:
       file: db/changelog/changeset/1.0/004-create-refresh-tokens.yaml
+  - include:
+      file: db/changelog/changeset/1.0/005-create-workouts.yaml
