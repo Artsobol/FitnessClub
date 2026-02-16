@@ -4,7 +4,7 @@ import io.github.artsobol.fitnessclub.exception.security.AuthenticationException
 import io.github.artsobol.fitnessclub.feature.auth.dto.AuthResponse;
 import io.github.artsobol.fitnessclub.feature.auth.dto.LoginRequest;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.LoginService;
-import io.github.artsobol.fitnessclub.feature.user.dto.User;
+import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import io.github.artsobol.fitnessclub.feature.user.service.api.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

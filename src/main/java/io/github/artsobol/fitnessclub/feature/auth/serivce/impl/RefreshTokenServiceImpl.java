@@ -6,7 +6,7 @@ import io.github.artsobol.fitnessclub.feature.auth.dto.RefreshToken;
 import io.github.artsobol.fitnessclub.feature.auth.dto.RotatedRefresh;
 import io.github.artsobol.fitnessclub.feature.auth.repository.RefreshTokenRepository;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RefreshTokenService;
-import io.github.artsobol.fitnessclub.feature.user.dto.User;
+import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import io.github.artsobol.fitnessclub.infrastructure.security.config.properties.SessionProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;

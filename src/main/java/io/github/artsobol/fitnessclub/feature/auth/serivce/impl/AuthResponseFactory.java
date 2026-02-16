@@ -4,7 +4,7 @@ import io.github.artsobol.fitnessclub.feature.auth.dto.AuthResponse;
 import io.github.artsobol.fitnessclub.feature.auth.dto.UserInfo;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.AccessTokenService;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RefreshTokenService;
-import io.github.artsobol.fitnessclub.feature.user.dto.User;
+import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
