@@ -1,8 +1,8 @@
 package io.github.artsobol.fitnessclub.feature.auth.serivce.impl;
 
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.AccessTokenService;
-import io.github.artsobol.fitnessclub.feature.user.dto.Role;
-import io.github.artsobol.fitnessclub.feature.user.dto.User;
+import io.github.artsobol.fitnessclub.feature.user.entity.User;
+import io.github.artsobol.fitnessclub.infrastructure.security.jwt.JwtSubject;
 import io.github.artsobol.fitnessclub.infrastructure.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class AccessTokenServiceImpl implements AccessTokenService {
 
     @Override
     public String createAccessToken(User user) {
-        Role role = user.getRole();
-        return jwtTokenProvider.generateToken(user.getEmail(), role);
+        JwtSubject subject = new JwtSubject(user.getId(), user.getEmail(), user.getRole());
+        return jwtTokenProvider.generateToken(subject);
     }
 }

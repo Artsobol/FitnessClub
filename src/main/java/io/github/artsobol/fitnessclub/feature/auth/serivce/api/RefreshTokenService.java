@@ -1,7 +1,7 @@
 package io.github.artsobol.fitnessclub.feature.auth.serivce.api;
 
 import io.github.artsobol.fitnessclub.feature.auth.dto.RotatedRefresh;
-import io.github.artsobol.fitnessclub.feature.user.dto.User;
+import io.github.artsobol.fitnessclub.feature.user.entity.User;
 
 import java.util.UUID;
 

@@ -1,6 +1,7 @@
-package io.github.artsobol.fitnessclub.feature.user.dto.trainer;
+package io.github.artsobol.fitnessclub.feature.trainer.entity;
 
-import io.github.artsobol.fitnessclub.feature.user.dto.User;
+import io.github.artsobol.fitnessclub.feature.trainerspecialization.entity.TrainerSpecialization;
+import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -13,9 +14,9 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -25,8 +26,9 @@ import java.util.UUID;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "trainer_profiles")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor()
 @EntityListeners(AuditingEntityListener.class)
 public class TrainerProfile {
 

@@ -1,6 +1,6 @@
 package io.github.artsobol.fitnessclub.feature.user.repository;
 
-import io.github.artsobol.fitnessclub.feature.user.dto.User;
+import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

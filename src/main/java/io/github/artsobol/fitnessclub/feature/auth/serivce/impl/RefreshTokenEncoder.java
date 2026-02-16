@@ -2,7 +2,7 @@ package io.github.artsobol.fitnessclub.feature.auth.serivce.impl;
 
 import io.github.artsobol.fitnessclub.feature.auth.dto.EncodedRefreshToken;
 import io.github.artsobol.fitnessclub.feature.auth.dto.RefreshToken;
-import io.github.artsobol.fitnessclub.feature.user.dto.User;
+import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import io.github.artsobol.fitnessclub.infrastructure.security.config.properties.RefreshTokenProperties;
 import io.github.artsobol.fitnessclub.infrastructure.utils.TokenUtils;
 import lombok.RequiredArgsConstructor;

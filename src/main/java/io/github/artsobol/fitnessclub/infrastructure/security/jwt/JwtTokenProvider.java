@@ -1,6 +1,5 @@
 package io.github.artsobol.fitnessclub.infrastructure.security.jwt;
 
-import io.github.artsobol.fitnessclub.feature.user.dto.Role;
 import io.github.artsobol.fitnessclub.infrastructure.security.config.properties.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.time.Duration;
 import java.util.Date;
+import java.util.UUID;
 
 @Component
 public class JwtTokenProvider {
@@ -24,13 +24,14 @@ public class JwtTokenProvider {
         this.accessTokenExpiration = properties.accessTokenExpiration();
     }
 
-    public String generateToken(String username, Role role) {
+    public String generateToken(JwtSubject subject) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + accessTokenExpiration.toMillis());
 
         return Jwts.builder()
-                .subject(username)
-                .claim("role", role.name())
+                .subject(subject.userId().toString())
+                .claim("role", subject.role().name())
+                .claim("username", subject.username())
                 .issuedAt(now)
                 .expiration(expiryDate)
                 .signWith(secretKey)
@@ -43,5 +44,10 @@ public class JwtTokenProvider {
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
+    }
+
+    public UUID extractUserId(String token) {
+        Claims claims = parseToken(token);
+        return UUID.fromString(claims.getSubject());
     }
 }

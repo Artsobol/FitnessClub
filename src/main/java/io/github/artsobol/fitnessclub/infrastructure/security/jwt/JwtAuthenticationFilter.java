@@ -1,7 +1,8 @@
 package io.github.artsobol.fitnessclub.infrastructure.security.jwt;
 
 import io.github.artsobol.fitnessclub.exception.http.BadRequestException;
-import io.github.artsobol.fitnessclub.feature.user.dto.Role;
+import io.github.artsobol.fitnessclub.feature.user.entity.Role;
+import io.github.artsobol.fitnessclub.infrastructure.security.user.UserPrincipal;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
@@ -19,6 +20,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -41,14 +43,23 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if (SecurityContextHolder.getContext().getAuthentication() == null) {
             Claims claims = parseToken(header);
-            createAuthentication(claims.getSubject(), getAuthority(claims));
+            UserPrincipal principal = createUserPrincipal(claims);
+            createAuthentication(principal, getAuthority(claims));
             filterChain.doFilter(request, response);
         }
 
     }
 
-    private void createAuthentication(String username, List<SimpleGrantedAuthority> authorities) {
-        Authentication auth = new UsernamePasswordAuthenticationToken(username, null, authorities);
+    private UserPrincipal createUserPrincipal(Claims claims){
+        UUID userId = UUID.fromString(claims.getSubject());
+        String username = claims.get("username", String.class);
+        String role = claims.get("role", String.class);
+
+        return new UserPrincipal(userId, username, Role.valueOf(role));
+    }
+
+    private void createAuthentication(UserPrincipal principal, List<SimpleGrantedAuthority> authorities) {
+        Authentication auth = new UsernamePasswordAuthenticationToken(principal, null, authorities);
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
@@ -62,8 +73,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private List<SimpleGrantedAuthority> getAuthority(Claims claims) {
-        Role role = claims.get("roles", Role.class);
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        String role = claims.get("role", String.class);
+        ensureRoleExists(role);
+        return List.of(new SimpleGrantedAuthority(role));
+    }
+
+    private void ensureRoleExists(String role){
+        if (role == null|| role.isBlank()) {
+            throw new BadRequestException("token.role.missing");
+        }
     }
 
     private boolean checkHeader(String header) {
