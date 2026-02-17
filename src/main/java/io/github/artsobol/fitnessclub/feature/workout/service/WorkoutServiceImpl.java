@@ -22,11 +22,18 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @PreAuthorize("hasAnyAuthority('TRAINER', 'MANAGER', 'ADMIN')")
-public class WorkoutServiceImpl implements WorkoutService {
+public class WorkoutServiceImpl implements WorkoutUseCase, WorkoutService{
 
     private final WorkoutMapper workoutMapper;
     private final TrainerReader trainerService;
     private final WorkoutRepository workoutRepository;
+
+    @Override
+    public Workout findById(Long id) {
+        return workoutRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("workout.not.found")
+        );
+    }
 
     @Override
     @Transactional
@@ -43,7 +50,7 @@ public class WorkoutServiceImpl implements WorkoutService {
     @Override
     @Transactional
     public WorkoutResponse updateWorkout(UUID trainerId, Long workoutId, WorkoutUpdateRequest request) {
-        Workout entity = findWorkoutById(workoutId);
+        Workout entity = findById(workoutId);
         ensureHasWorkout(trainerId, workoutId);
 
         Instant newStarts = request.startsAt() != null ? request.startsAt() : entity.getStartsAt();
@@ -60,7 +67,7 @@ public class WorkoutServiceImpl implements WorkoutService {
     public WorkoutResponse cancelWorkout(UUID trainerId, Long workoutId) {
         ensureHasWorkout(trainerId, workoutId);
 
-        Workout entity = findWorkoutById(workoutId);
+        Workout entity = findById(workoutId);
         entity.setStatus(WorkoutStatus.CANCELLED);
 
         return workoutMapper.toResponse(entity);
@@ -71,12 +78,6 @@ public class WorkoutServiceImpl implements WorkoutService {
         entity.setStatus(WorkoutStatus.PLANNED);
         entity.setTrainerProfile(profile);
         return entity;
-    }
-
-    private Workout findWorkoutById(Long id) {
-        return workoutRepository.findById(id).orElseThrow(
-                () -> new NotFoundException("workout.not.found")
-        );
     }
 
     private void ensureHasWorkout(UUID trainerId, Long workoutId){

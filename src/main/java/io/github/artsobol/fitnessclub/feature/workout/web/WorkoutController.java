@@ -3,7 +3,7 @@ package io.github.artsobol.fitnessclub.feature.workout.web;
 import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutRequest;
 import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutResponse;
 import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutUpdateRequest;
-import io.github.artsobol.fitnessclub.feature.workout.service.WorkoutService;
+import io.github.artsobol.fitnessclub.feature.workout.service.WorkoutUseCase;
 import io.github.artsobol.fitnessclub.infrastructure.security.user.UserPrincipal;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/workouts", produces = MediaType.APPLICATION_JSON_VALUE)
 public class WorkoutController {
 
-    private final WorkoutService service;
+    private final WorkoutUseCase service;
 
     @PostMapping
     public ResponseEntity<WorkoutResponse> create(

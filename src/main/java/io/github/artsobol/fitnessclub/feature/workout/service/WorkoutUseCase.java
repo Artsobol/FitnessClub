@@ -6,7 +6,7 @@ import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutUpdateRequest;
 
 import java.util.UUID;
 
-public interface WorkoutService {
+public interface WorkoutUseCase {
 
     WorkoutResponse createWorkout(UUID userId, WorkoutRequest request);
 

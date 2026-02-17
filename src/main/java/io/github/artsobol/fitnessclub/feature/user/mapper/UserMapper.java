@@ -1,5 +1,6 @@
 package io.github.artsobol.fitnessclub.feature.user.mapper;
 
+import io.github.artsobol.fitnessclub.feature.user.dto.UserResponse;
 import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import io.github.artsobol.fitnessclub.feature.user.dto.UserCreateRequest;
 import org.mapstruct.BeanMapping;
@@ -16,4 +17,11 @@ public interface UserMapper {
     @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "birthdate", source = "birthdate")
     User toEntity(UserCreateRequest request);
+
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "firstName", source = "firstName")
+    @Mapping(target = "lastName", source = "lastName")
+    @Mapping(target = "birthdate", source = "birthdate")
+    UserResponse toResponse(User user);
 }

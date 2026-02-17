@@ -7,7 +7,7 @@ import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RegistrationServi
 import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import io.github.artsobol.fitnessclub.feature.user.dto.UserCreateRequest;
 import io.github.artsobol.fitnessclub.feature.user.repository.UserRepository;
-import io.github.artsobol.fitnessclub.feature.user.service.api.UserService;
+import io.github.artsobol.fitnessclub.feature.user.service.UserUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final UserService userService;
+    private final UserUseCase userUseCase;
     private final AuthResponseFactory authResponseFactory;
 
     @Override
@@ -35,7 +35,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                 request.lastName(),
                 request.birthdate()
         );
-        User user = userService.createUser(userRequest);
+        User user = userUseCase.createUser(userRequest);
 
         UUID sessionId = UUID.randomUUID();
         return authResponseFactory.create(user, sessionId);

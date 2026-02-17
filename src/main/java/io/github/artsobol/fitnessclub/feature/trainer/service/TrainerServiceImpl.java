@@ -11,7 +11,7 @@ import io.github.artsobol.fitnessclub.feature.trainer.repository.TrainerReposito
 import io.github.artsobol.fitnessclub.feature.trainerspecialization.service.TrainerSpecializationReader;
 import io.github.artsobol.fitnessclub.feature.user.entity.Role;
 import io.github.artsobol.fitnessclub.feature.user.entity.User;
-import io.github.artsobol.fitnessclub.feature.user.service.api.UserService;
+import io.github.artsobol.fitnessclub.feature.user.service.UserUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ import java.util.UUID;
 public class TrainerServiceImpl implements TrainerUseCase, TrainerReader {
 
     private final TrainerSpecializationReader trainerSpecializationReader;
-    private final UserService userService;
+    private final UserUseCase userUseCase;
     private final TrainerRepository trainerRepository;
     private final TrainerMapper trainerMapper;
 
@@ -43,7 +43,7 @@ public class TrainerServiceImpl implements TrainerUseCase, TrainerReader {
         UUID userId = request.userId();
         ensureTrainerProfileNotExists(userId);
 
-        User user = userService.changeRole(userId, Role.TRAINER);
+        User user = userUseCase.changeRole(userId, Role.TRAINER);
         TrainerSpecialization specialization = trainerSpecializationReader.getSpecializationById(request.specializationId());
 
         return createTrainerProfile(user, specialization);

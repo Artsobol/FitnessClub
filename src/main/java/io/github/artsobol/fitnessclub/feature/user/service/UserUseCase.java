@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.user.service.api;
+package io.github.artsobol.fitnessclub.feature.user.service;
 
 import io.github.artsobol.fitnessclub.feature.user.entity.Role;
 import io.github.artsobol.fitnessclub.feature.user.entity.User;
@@ -6,7 +6,7 @@ import io.github.artsobol.fitnessclub.feature.user.dto.UserCreateRequest;
 
 import java.util.UUID;
 
-public interface UserService {
+public interface UserUseCase {
 
     User createUser(UserCreateRequest request);
 

@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.user.service.impl;
+package io.github.artsobol.fitnessclub.feature.user.service;
 
 import io.github.artsobol.fitnessclub.exception.http.ConflictException;
 import io.github.artsobol.fitnessclub.exception.http.NotFoundException;
@@ -8,7 +8,6 @@ import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import io.github.artsobol.fitnessclub.feature.user.dto.UserCreateRequest;
 import io.github.artsobol.fitnessclub.feature.user.mapper.UserMapper;
 import io.github.artsobol.fitnessclub.feature.user.repository.UserRepository;
-import io.github.artsobol.fitnessclub.feature.user.service.api.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +16,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserUseCase, UserService {
 
     private final UserRepository repository;
     private final UserMapper mapper;
@@ -33,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User changeRole(UUID userId, Role role) {
-        User user = findUserById(userId);
+        User user = findById(userId);
 
         if (user.getRole().equals(role)) {
             throw new ConflictException("user.has.role.already");
@@ -43,9 +42,9 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-
-    public User findUserById(UUID id) {
-        return repository.findById(id).orElseThrow(
+    @Override
+    public User findById(UUID userId) {
+        return repository.findById(userId).orElseThrow(
                 () -> new NotFoundException("user.not.found")
         );
     }
