@@ -9,3 +9,7 @@ databaseChangeLog:
       file: db/changelog/changeset/1.0/004-create-refresh-tokens.yaml
   - include:
       file: db/changelog/changeset/1.0/005-create-workouts.yaml
+  - include:
+      file: db/changelog/changeset/1.0/006-create-bookings.yaml
+  - include:
+      file: db/changelog/changeset/1.0/007-create-memberships.yaml
