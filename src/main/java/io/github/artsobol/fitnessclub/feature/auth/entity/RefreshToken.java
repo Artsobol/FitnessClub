@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.auth.dto;
+package io.github.artsobol.fitnessclub.feature.auth.entity;
 
 import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import jakarta.persistence.Column;

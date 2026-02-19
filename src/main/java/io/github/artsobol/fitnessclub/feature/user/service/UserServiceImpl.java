@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserUseCase, UserService {
         User user = findById(userId);
 
         if (user.getRole().equals(role)) {
-            throw new ConflictException("user.has.role.already");
+            throw new ConflictException("user.has.role.already", role);
         }
 
         user.setRole(role);

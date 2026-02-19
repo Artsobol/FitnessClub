@@ -83,5 +83,4 @@ public class TrainerServiceImpl implements TrainerUseCase, TrainerReader {
             throw new ConflictException("trainer.profile.exists");
         }
     }
-
 }

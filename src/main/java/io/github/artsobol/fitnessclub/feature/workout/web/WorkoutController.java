@@ -1,8 +1,8 @@
 package io.github.artsobol.fitnessclub.feature.workout.web;
 
-import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutRequest;
-import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutResponse;
-import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutUpdateRequest;
+import io.github.artsobol.fitnessclub.feature.workout.dto.request.WorkoutRequest;
+import io.github.artsobol.fitnessclub.feature.workout.dto.response.WorkoutResponse;
+import io.github.artsobol.fitnessclub.feature.workout.dto.request.WorkoutUpdateRequest;
 import io.github.artsobol.fitnessclub.feature.workout.service.WorkoutUseCase;
 import io.github.artsobol.fitnessclub.infrastructure.security.user.UserPrincipal;
 import jakarta.validation.Valid;

@@ -1,6 +1,6 @@
 package io.github.artsobol.fitnessclub.feature.membership.web;
 
-import io.github.artsobol.fitnessclub.feature.membership.dto.MembershipResponse;
+import io.github.artsobol.fitnessclub.feature.membership.dto.response.MembershipResponse;
 import io.github.artsobol.fitnessclub.feature.membership.service.ClientMembershipUseCase;
 import io.github.artsobol.fitnessclub.infrastructure.security.user.UserPrincipal;
 import lombok.RequiredArgsConstructor;

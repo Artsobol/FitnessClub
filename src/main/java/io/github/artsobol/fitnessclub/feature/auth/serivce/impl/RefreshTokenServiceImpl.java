@@ -1,9 +1,9 @@
 package io.github.artsobol.fitnessclub.feature.auth.serivce.impl;
 
 import io.github.artsobol.fitnessclub.exception.security.AuthenticationException;
-import io.github.artsobol.fitnessclub.feature.auth.dto.EncodedRefreshToken;
-import io.github.artsobol.fitnessclub.feature.auth.dto.RefreshToken;
-import io.github.artsobol.fitnessclub.feature.auth.dto.RotatedRefresh;
+import io.github.artsobol.fitnessclub.feature.auth.dto.response.EncodedRefreshToken;
+import io.github.artsobol.fitnessclub.feature.auth.entity.RefreshToken;
+import io.github.artsobol.fitnessclub.feature.auth.dto.response.RotatedRefresh;
 import io.github.artsobol.fitnessclub.feature.auth.repository.RefreshTokenRepository;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RefreshTokenService;
 import io.github.artsobol.fitnessclub.feature.user.entity.User;

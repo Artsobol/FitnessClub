@@ -1,8 +1,8 @@
 package io.github.artsobol.fitnessclub.feature.trainerspecialization.web;
 
-import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.TrainerSpecializationCreateRequest;
-import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.TrainerSpecializationResponse;
-import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.TrainerSpecializationUpdateRequest;
+import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.request.TrainerSpecializationCreateRequest;
+import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.response.TrainerSpecializationResponse;
+import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.request.TrainerSpecializationUpdateRequest;
 import io.github.artsobol.fitnessclub.feature.trainerspecialization.service.TrainerSpecializationUseCase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

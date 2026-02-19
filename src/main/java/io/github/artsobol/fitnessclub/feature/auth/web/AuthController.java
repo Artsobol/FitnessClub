@@ -1,8 +1,8 @@
 package io.github.artsobol.fitnessclub.feature.auth.web;
 
-import io.github.artsobol.fitnessclub.feature.auth.dto.AuthResponse;
-import io.github.artsobol.fitnessclub.feature.auth.dto.LoginRequest;
-import io.github.artsobol.fitnessclub.feature.auth.dto.RegistrationRequest;
+import io.github.artsobol.fitnessclub.feature.auth.dto.response.AuthResponse;
+import io.github.artsobol.fitnessclub.feature.auth.dto.request.LoginRequest;
+import io.github.artsobol.fitnessclub.feature.auth.dto.request.RegistrationRequest;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.LoginService;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RefreshService;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RegistrationService;

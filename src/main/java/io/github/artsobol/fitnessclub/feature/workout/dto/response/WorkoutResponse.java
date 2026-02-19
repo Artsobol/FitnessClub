@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.workout.dto;
+package io.github.artsobol.fitnessclub.feature.workout.dto.response;
 
 import io.github.artsobol.fitnessclub.feature.trainer.dto.TrainerResponse;
 import io.github.artsobol.fitnessclub.feature.workout.entity.WorkoutStatus;

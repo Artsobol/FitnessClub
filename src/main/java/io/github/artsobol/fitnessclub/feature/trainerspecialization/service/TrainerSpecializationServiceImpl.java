@@ -2,9 +2,9 @@ package io.github.artsobol.fitnessclub.feature.trainerspecialization.service;
 
 import io.github.artsobol.fitnessclub.exception.http.ConflictException;
 import io.github.artsobol.fitnessclub.exception.http.NotFoundException;
-import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.TrainerSpecializationCreateRequest;
-import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.TrainerSpecializationResponse;
-import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.TrainerSpecializationUpdateRequest;
+import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.request.TrainerSpecializationCreateRequest;
+import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.response.TrainerSpecializationResponse;
+import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.request.TrainerSpecializationUpdateRequest;
 import io.github.artsobol.fitnessclub.feature.trainerspecialization.entity.TrainerSpecialization;
 import io.github.artsobol.fitnessclub.feature.trainerspecialization.mapper.TrainerSpecializationMapper;
 import io.github.artsobol.fitnessclub.feature.trainerspecialization.repository.TrainerSpecializationRepository;

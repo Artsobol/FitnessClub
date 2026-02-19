@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.membership.dto;
+package io.github.artsobol.fitnessclub.feature.membership.dto.response;
 
 import io.github.artsobol.fitnessclub.feature.membership.entity.MembershipStatus;
 import io.github.artsobol.fitnessclub.feature.user.dto.UserResponse;

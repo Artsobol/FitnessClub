@@ -1,7 +1,7 @@
 package io.github.artsobol.fitnessclub.feature.auth.serivce.impl;
 
-import io.github.artsobol.fitnessclub.feature.auth.dto.AuthResponse;
-import io.github.artsobol.fitnessclub.feature.auth.dto.RotatedRefresh;
+import io.github.artsobol.fitnessclub.feature.auth.dto.response.AuthResponse;
+import io.github.artsobol.fitnessclub.feature.auth.dto.response.RotatedRefresh;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RefreshService;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RefreshTokenService;
 import lombok.RequiredArgsConstructor;

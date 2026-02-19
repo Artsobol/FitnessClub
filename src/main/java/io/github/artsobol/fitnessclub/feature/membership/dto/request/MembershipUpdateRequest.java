@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.membership.dto;
+package io.github.artsobol.fitnessclub.feature.membership.dto.request;
 
 import java.time.LocalDate;
 

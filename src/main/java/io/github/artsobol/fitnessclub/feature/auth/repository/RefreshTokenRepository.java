@@ -1,6 +1,6 @@
 package io.github.artsobol.fitnessclub.feature.auth.repository;
 
-import io.github.artsobol.fitnessclub.feature.auth.dto.RefreshToken;
+import io.github.artsobol.fitnessclub.feature.auth.entity.RefreshToken;
 import jakarta.persistence.LockModeType;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
