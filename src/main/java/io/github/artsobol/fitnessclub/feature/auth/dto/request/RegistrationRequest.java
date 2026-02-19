@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.auth.dto;
+package io.github.artsobol.fitnessclub.feature.auth.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

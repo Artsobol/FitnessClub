@@ -1,9 +1,9 @@
 package io.github.artsobol.fitnessclub.feature.workout.mapper;
 
 import io.github.artsobol.fitnessclub.feature.trainer.mapper.TrainerMapper;
-import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutRequest;
-import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutResponse;
-import io.github.artsobol.fitnessclub.feature.workout.dto.WorkoutUpdateRequest;
+import io.github.artsobol.fitnessclub.feature.workout.dto.request.WorkoutRequest;
+import io.github.artsobol.fitnessclub.feature.workout.dto.response.WorkoutResponse;
+import io.github.artsobol.fitnessclub.feature.workout.dto.request.WorkoutUpdateRequest;
 import io.github.artsobol.fitnessclub.feature.workout.entity.Workout;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;

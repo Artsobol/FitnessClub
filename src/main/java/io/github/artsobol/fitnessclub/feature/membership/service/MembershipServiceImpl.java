@@ -2,9 +2,9 @@ package io.github.artsobol.fitnessclub.feature.membership.service;
 
 import io.github.artsobol.fitnessclub.exception.http.BadRequestException;
 import io.github.artsobol.fitnessclub.exception.http.NotFoundException;
-import io.github.artsobol.fitnessclub.feature.membership.dto.MembershipCreateRequest;
-import io.github.artsobol.fitnessclub.feature.membership.dto.MembershipResponse;
-import io.github.artsobol.fitnessclub.feature.membership.dto.MembershipUpdateRequest;
+import io.github.artsobol.fitnessclub.feature.membership.dto.request.MembershipCreateRequest;
+import io.github.artsobol.fitnessclub.feature.membership.dto.response.MembershipResponse;
+import io.github.artsobol.fitnessclub.feature.membership.dto.request.MembershipUpdateRequest;
 import io.github.artsobol.fitnessclub.feature.membership.entity.Membership;
 import io.github.artsobol.fitnessclub.feature.membership.entity.MembershipStatus;
 import io.github.artsobol.fitnessclub.feature.membership.mapper.MembershipMapper;
@@ -94,7 +94,7 @@ public class MembershipServiceImpl implements ManagementMembershipUseCase, Clien
     }
 
     protected Membership findById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new NotFoundException("membership.not.found"));
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("membership.not.found", id));
     }
 
     protected Membership findActiveByUserId(UUID userId) {

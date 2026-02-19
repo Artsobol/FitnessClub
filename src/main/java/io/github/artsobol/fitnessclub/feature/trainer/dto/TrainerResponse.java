@@ -1,6 +1,6 @@
 package io.github.artsobol.fitnessclub.feature.trainer.dto;
 
-import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.TrainerSpecializationResponse;
+import io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.response.TrainerSpecializationResponse;
 
 import java.util.UUID;
 

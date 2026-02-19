@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.trainerspecialization.dto;
+package io.github.artsobol.fitnessclub.feature.trainerspecialization.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 

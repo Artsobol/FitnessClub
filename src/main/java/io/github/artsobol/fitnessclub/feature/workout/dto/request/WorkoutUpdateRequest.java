@@ -1,4 +1,4 @@
-package io.github.artsobol.fitnessclub.feature.workout.dto;
+package io.github.artsobol.fitnessclub.feature.workout.dto.request;
 
 import java.time.Instant;
 

@@ -1,8 +1,8 @@
 package io.github.artsobol.fitnessclub.feature.auth.serivce.impl;
 
 import io.github.artsobol.fitnessclub.exception.http.ConflictException;
-import io.github.artsobol.fitnessclub.feature.auth.dto.AuthResponse;
-import io.github.artsobol.fitnessclub.feature.auth.dto.RegistrationRequest;
+import io.github.artsobol.fitnessclub.feature.auth.dto.response.AuthResponse;
+import io.github.artsobol.fitnessclub.feature.auth.dto.request.RegistrationRequest;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RegistrationService;
 import io.github.artsobol.fitnessclub.feature.user.entity.User;
 import io.github.artsobol.fitnessclub.feature.user.dto.UserCreateRequest;

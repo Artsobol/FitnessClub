@@ -1,7 +1,7 @@
 package io.github.artsobol.fitnessclub.feature.membership.web;
 
-import io.github.artsobol.fitnessclub.feature.membership.dto.MembershipResponse;
-import io.github.artsobol.fitnessclub.feature.membership.dto.MembershipUpdateRequest;
+import io.github.artsobol.fitnessclub.feature.membership.dto.response.MembershipResponse;
+import io.github.artsobol.fitnessclub.feature.membership.dto.request.MembershipUpdateRequest;
 import io.github.artsobol.fitnessclub.feature.membership.service.ManagementMembershipUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

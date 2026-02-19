@@ -1,7 +1,7 @@
 package io.github.artsobol.fitnessclub.feature.auth.serivce.impl;
 
-import io.github.artsobol.fitnessclub.feature.auth.dto.AuthResponse;
-import io.github.artsobol.fitnessclub.feature.auth.dto.UserInfo;
+import io.github.artsobol.fitnessclub.feature.auth.dto.response.AuthResponse;
+import io.github.artsobol.fitnessclub.feature.auth.dto.response.UserInfo;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.AccessTokenService;
 import io.github.artsobol.fitnessclub.feature.auth.serivce.api.RefreshTokenService;
 import io.github.artsobol.fitnessclub.feature.user.entity.User;
