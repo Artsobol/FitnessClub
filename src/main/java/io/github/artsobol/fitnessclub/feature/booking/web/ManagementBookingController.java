@@ -52,8 +52,8 @@ public class ManagementBookingController {
 
     @PostMapping("/users/{userId}/workouts/{workoutId}/book")
     public ResponseEntity<BookingResponse> bookForUser(
-            @PathVariable("userId") UUID userId,
-            @PathVariable("workoutId") Long workoutId
+            @PathVariable UUID userId,
+            @PathVariable Long workoutId
     ) {
         BookingResponse response = useCase.bookForUser(userId, workoutId);
 
@@ -62,8 +62,8 @@ public class ManagementBookingController {
 
     @PatchMapping("/users/{userId}/workouts/{workoutId}/book/cancel")
     public ResponseEntity<BookingResponse> cancelForUser(
-            @PathVariable("userId") UUID userId,
-            @PathVariable("workoutId") Long workoutId
+            @PathVariable UUID userId,
+            @PathVariable Long workoutId
     ) {
         BookingResponse response = useCase.cancelForUser(userId, workoutId);
 

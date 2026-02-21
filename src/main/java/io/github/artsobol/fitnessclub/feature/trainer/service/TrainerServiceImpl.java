@@ -74,7 +74,7 @@ public class TrainerServiceImpl implements TrainerUseCase, TrainerReader {
     @Override
     public TrainerProfile getTrainerProfile(UUID trainerId) {
         return trainerRepository.findById(trainerId).orElseThrow(
-                () -> new NotFoundException("trainer.profile.not.found")
+                () -> new NotFoundException("trainer.profile.not.found", trainerId)
         );
     }
 

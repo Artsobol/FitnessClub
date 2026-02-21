@@ -55,8 +55,8 @@ public class TrainerSpecializationController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        useCase.delete(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<TrainerSpecializationResponse> deactivate(@PathVariable Long id) {
+        TrainerSpecializationResponse response = useCase.deactive(id);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

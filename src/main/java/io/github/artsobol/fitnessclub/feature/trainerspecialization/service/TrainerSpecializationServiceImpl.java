@@ -65,9 +65,11 @@ public class TrainerSpecializationServiceImpl implements TrainerSpecializationUs
     @Override
     @Transactional
     @PreAuthorize("hasAnyAuthority('MANAGER', 'ADMIN')")
-    public void delete(Long id) {
+    public TrainerSpecializationResponse deactive(Long id) {
         TrainerSpecialization entity = getSpecializationById(id);
         entity.deactivate();
+
+        return mapper.toResponse(entity);
     }
 
     public TrainerSpecialization getSpecializationById(Long id) {

@@ -8,6 +8,6 @@ public record TrainerResponse(
         UUID id,
         String firstName,
         String lastName,
-        TrainerSpecializationResponse title
+        TrainerSpecializationResponse specialization
 ) {
 }

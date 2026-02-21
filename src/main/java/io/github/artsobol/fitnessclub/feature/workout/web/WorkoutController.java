@@ -43,7 +43,7 @@ public class WorkoutController {
     ) {
         WorkoutResponse response = service.updateWorkout(principal.userId(), workoutId, request);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PatchMapping("/{id}/cancel")
@@ -53,6 +53,6 @@ public class WorkoutController {
     ) {
         WorkoutResponse response = service.cancelWorkout(principal.userId(), workoutId);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

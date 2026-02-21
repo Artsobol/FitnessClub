@@ -1,8 +1,10 @@
 package io.github.artsobol.fitnessclub.infrastructure.security.config;
 
 import io.github.artsobol.fitnessclub.feature.user.repository.UserRepository;
+import io.github.artsobol.fitnessclub.infrastructure.security.config.properties.JwtProperties;
 import io.github.artsobol.fitnessclub.infrastructure.security.config.properties.SecurityConfigProperties;
 import io.github.artsobol.fitnessclub.infrastructure.security.jwt.JwtAuthenticationFilter;
+import io.github.artsobol.fitnessclub.infrastructure.security.jwt.JwtTokenProvider;
 import io.github.artsobol.fitnessclub.infrastructure.security.user.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -42,6 +44,16 @@ public class SecurityConfig {
                 ).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+    }
+
+    @Bean
+    public JwtTokenProvider jwtTokenProvider(JwtProperties properties) {
+        return new JwtTokenProvider(properties);
+    }
+
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter(JwtTokenProvider provider) {
+        return new JwtAuthenticationFilter(provider);
     }
 
     @Bean

@@ -25,7 +25,7 @@ public class TrainerController {
 
     private final TrainerUseCase service;
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<TrainerResponse> create(@Valid @RequestBody TrainerCreateRequest request){
         TrainerResponse response = service.createTrainer(request);
 

@@ -14,6 +14,6 @@ public interface TrainerMapper {
     @Mapping(target = "id", source = "id")
     @Mapping(target = "firstName", source = "user.firstName")
     @Mapping(target = "lastName", source = "user.lastName")
-    @Mapping(target = "title", source = "specialization")
+    @Mapping(target = "specialization", source = "specialization")
     TrainerResponse toResponse(TrainerProfile entity);
 }

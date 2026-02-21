@@ -16,5 +16,5 @@ public interface TrainerSpecializationUseCase {
 
     TrainerSpecializationResponse update(Long id, TrainerSpecializationUpdateRequest request);
 
-    void delete(Long id);
+    TrainerSpecializationResponse deactive(Long id);
 }
